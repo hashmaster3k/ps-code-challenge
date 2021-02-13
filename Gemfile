@@ -34,6 +34,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Reduce calls to DB during seeding
+gem 'activerecord-import'
+
 group :test do
   gem 'shoulda-matchers', '~> 4.0'
 end
