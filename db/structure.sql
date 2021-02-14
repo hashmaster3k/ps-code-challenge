@@ -42,6 +42,18 @@ CREATE TABLE public.street_cafes (
 
 
 --
+-- Name: cafe_category_info; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.cafe_category_info AS
+ SELECT street_cafes.category,
+    count(*) AS total_places,
+    sum(street_cafes.num_chairs) AS total_chairs
+   FROM public.street_cafes
+  GROUP BY street_cafes.category;
+
+
+--
 -- Name: post_code_info; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -133,6 +145,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210213161821'),
 ('20210213165037'),
-('20210213165602');
+('20210213165602'),
+('20210214161846');
 
 

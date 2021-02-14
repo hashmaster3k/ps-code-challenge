@@ -22,3 +22,7 @@ end
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural "post_code_info", "post_code_info"
 end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.plural "cafe_category_info", "cafe_category_info"
+end
