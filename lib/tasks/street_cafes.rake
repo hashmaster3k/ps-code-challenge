@@ -5,8 +5,6 @@ namespace :street_cafes do
   task categorize: :environment do
     include Statistical
 
-    starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-
     cafes = StreetCafe.where(category: nil)
     cafes_LS1 = []
     cafes_LS2 = []
@@ -50,9 +48,5 @@ namespace :street_cafes do
         cafe.save
       end
     end
-
-    ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    elapsed = ending - starting
-    puts "\nSuccess! Took #{elapsed.round(2)} seconds to categorize the resource.\n\n"
   end
 end
