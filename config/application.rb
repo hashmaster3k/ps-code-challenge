@@ -29,5 +29,8 @@ module PsCodeChallenge
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Switch from schema.rb to structure.sql
+    config.active_record.schema_format = :sql
   end
 end
