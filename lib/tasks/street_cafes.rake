@@ -66,4 +66,13 @@ namespace :street_cafes do
 
     StreetCafe.delete_cafes(cafes)
   end
+
+  desc "Concatenates the category to the beginning of the cafe name "
+  task concat_medium_large_cafes: :environment do
+    cafes = StreetCafe.find_medium_large_cafes
+    cafes.map do |cafe|
+      cafe.name = "#{cafe.category} #{cafe.name}"
+      cafe.save
+    end
+  end
 end
