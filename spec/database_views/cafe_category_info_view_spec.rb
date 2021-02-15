@@ -11,7 +11,7 @@ RSpec.describe 'Cafe Category Info View' do
   describe 'Test Sample Data' do
     before :each do
       street_cafes = []
-      CSV.foreach('./test_data.csv', headers: true, header_converters: :symbol) do |data|
+      CSV.foreach('./spec/fixtures/test_data.csv', headers: true, header_converters: :symbol) do |data|
         street_cafes << StreetCafe.new(name: data[:cafrestaurant_name], address: data[:street_address], post_code: data[:post_code], num_chairs: data[:number_of_chairs])
       end
       StreetCafe.import(street_cafes)
