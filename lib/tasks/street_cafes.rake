@@ -55,7 +55,8 @@ namespace :street_cafes do
   task export_small_cafes: :environment do
     cafes = StreetCafe.find_small_cafes
     headers = ['Café/Restaurant Name', 'Street Address', 'Post Code', 'Number of Chairs']
-    file = "#{Rails.root}/exported_data/list_small_cafes.csv"
+    file = "#{Rails.root}/exported_data/street_cafes/list_small_cafes.csv"
+    file = "#{Rails.root}/spec/fixtures/list_small_cafes.csv" if Rails.env == 'test'
 
     CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
       cafes.each do |cafe|
