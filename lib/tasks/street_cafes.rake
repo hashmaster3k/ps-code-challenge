@@ -54,9 +54,9 @@ namespace :street_cafes do
   desc "Exports cafes with categories labeled small to a csv and deletes the records"
   task export_small_cafes: :environment do
     cafes = StreetCafe.find_small_cafes
-    headers = ['Café/Restaurant Name', 'Street Adress', 'Post Code', 'Numer of Chairs']
+    headers = ['Café/Restaurant Name', 'Street Address', 'Post Code', 'Number of Chairs']
     file = "#{Rails.root}/exported_data/list_small_cafes.csv"
-    
+
     CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
       cafes.each do |cafe|
         writer << [cafe.name, cafe.address, cafe.post_code, cafe.num_chairs]
