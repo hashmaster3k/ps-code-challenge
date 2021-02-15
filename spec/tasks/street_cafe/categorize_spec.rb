@@ -1,12 +1,6 @@
 require 'rails_helper'
 
-Rails.application.load_tasks
-
 RSpec.describe 'Street Cafe Categorize Task' do
-  after(:all) do
-    Rake::Task["street_cafes:categorize"].reenable
-  end
-
   it 'should categorize properly' do
     cafe1 = StreetCafe.create!(name: 'Cafe 1', address: '1', post_code: 'LS1 123', num_chairs: 5).id
     cafe2 = StreetCafe.create!(name: 'Cafe 2', address: '2', post_code: 'LS1 234', num_chairs: 10).id
@@ -21,7 +15,7 @@ RSpec.describe 'Street Cafe Categorize Task' do
       expect(cafe.category).to be nil
     end
 
-    Rake::Task["street_cafes:categorize"].invoke
+    Rake::Task["street_cafes:categorize"].execute
 
     expect(StreetCafe.find(cafe1).category).to eq('ls1 small')
     expect(StreetCafe.find(cafe2).category).to eq('ls1 medium')
